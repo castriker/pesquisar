@@ -6,33 +6,23 @@
     <title>Pesquisar no Site</title>
     <style>
         body { font-family: Arial, sans-serif; padding: 20px; text-align: center; }
-        .highlight { background-color: yellow; font-weight: bold; }
-        input { padding: 8px; width: 200px; }
+        input { padding: 8px; width: 300px; }
         button { padding: 8px; cursor: pointer; }
     </style>
 </head>
 <body>
-    <h2>Digite o termo que deseja procurar:</h2>
-    <input type="text" id="searchInput">
-    <button onclick="searchOnPage()">🔍 Pesquisar</button>
+    <h2>Pesquisar no site Esquema Elétrico</h2>
+    <input type="text" id="searchQuery" placeholder="Digite sua pesquisa">
+    <button onclick="searchSite()">🔍 Pesquisar</button>
+
     <div id="results"></div>
 
     <script>
-        function searchOnPage() {
-            let term = document.getElementById("searchInput").value;
-            if (!term) return;
-
-            let bodyText = document.body.innerText;
-            let paragraphs = bodyText.split("\n");
-            let matchedParagraphs = paragraphs.filter(p => p.toLowerCase().includes(term.toLowerCase()));
-
-            let resultHTML = "<h3>Resultados encontrados:</h3>";
-            matchedParagraphs.forEach(p => {
-                let highlighted = p.replace(new RegExp(`(${term})`, "gi"), '<span class="highlight">$1</span>');
-                resultHTML += `<p>${highlighted}</p>`;
-            });
-
-            document.getElementById("results").innerHTML = resultHTML || "<p>Nenhum resultado encontrado.</p>";
+        function searchSite() {
+            let query = document.getElementById("searchQuery").value;
+            if (query) {
+                window.location.href = "https://www.google.com/search?q=" + query + "+site:www.esquemaeletrico.com";
+            }
         }
     </script>
 </body>
