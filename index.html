@@ -15,13 +15,13 @@
     <input type="text" id="searchQuery" placeholder="Digite sua pesquisa">
     <button onclick="searchSite()">🔍 Pesquisar</button>
 
-    <div id="results"></div>
-
     <script>
         function searchSite() {
             let query = document.getElementById("searchQuery").value;
-            if (query) {
-                window.location.href = "https://www.google.com/search?q=" + query + "+site:www.esquemaeletrico.com";
+            if (query.trim() !== "") {
+                window.open("https://www.google.com/search?q=" + encodeURIComponent(query) + "+site:www.esquemaeletrico.com", "_blank");
+            } else {
+                alert("Por favor, digite um termo para pesquisar.");
             }
         }
     </script>
